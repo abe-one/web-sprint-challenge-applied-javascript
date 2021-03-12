@@ -49,17 +49,6 @@ const Card = (article) => {
   return card_div;
 };
 
-// let header = document.querySelector(`.header-container`);
-console.log(
-  Card({
-    id: "6bd3d116-39f8-4845-8544-3c271cdb9e89",
-    headline: "jQuery Animations: When and Where to Use Them, and Not CSS",
-    authorPhoto:
-      "https://tk-assets.lambdaschool.com/1891c758-b3f4-4ec7-9d88-590bf7c7ceb2_fido.jpg",
-    authorName: "FIDO WALKSALOT",
-  })
-);
-
 import axios from "axios";
 
 const cardAppender = (selector) => {
@@ -76,11 +65,11 @@ const cardAppender = (selector) => {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
     .then((res) => {
-      // Array topickeys inside articles obj
+      // Array of topics from keys inside articles obj
       let article_topics = Object.keys(res.data.articles);
-      // Manipulate each topic obj
+      // Manipulate each topic obj to
       article_topics.forEach((each_topic) => {
-        // Manipulate each article in each topic obj
+        // Manipulate each article inside each topic obj
         res.data.articles[each_topic].forEach((each_article) => {
           app_node.appendChild(Card(each_article));
         });
@@ -91,7 +80,8 @@ const cardAppender = (selector) => {
         Card({
           id: "Ruh-Roh",
           headline: `Failed to load Topics ${err}`,
-          authorPhoto: "",
+          authorPhoto:
+            "https://images.unsplash.com/photo-1485981133625-f1a03c887f0a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=950&q=80",
           authorName: "Rerror",
         })
       );
