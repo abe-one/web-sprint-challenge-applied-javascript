@@ -30,7 +30,7 @@ const Card = (article) => {
 
   card_headline.textContent = article.headline;
   card_img.src = article.authorPhoto;
-  card_name.textContent = article.authorName;
+  card_name.textContent = `By ${article.authorName}`;
 
   card_div.appendChild(card_headline);
   card_div.appendChild(card_author);
