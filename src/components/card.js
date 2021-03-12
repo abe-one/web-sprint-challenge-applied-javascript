@@ -59,27 +59,29 @@ const cardAppender = (selector) => {
   //
   let app_node = document.querySelector(selector);
 
-  axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
-    // Array topickeys inside articles obj
-    let article_topics = Object.keys(res.data.articles);
-    // Manipulate each topic obj
-    article_topics.forEach((each_topic) => {
-      // Manipulate each article in each topic obj
-      res.data.articles[each_topic].forEach((each_article) => {
-        app_node.appendChild(Card(each_article));
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((res) => {
+      // Array topickeys inside articles obj
+      let article_topics = Object.keys(res.data.articles);
+      // Manipulate each topic obj
+      article_topics.forEach((each_topic) => {
+        // Manipulate each article in each topic obj
+        res.data.articles[each_topic].forEach((each_article) => {
+          app_node.appendChild(Card(each_article));
+        });
       });
+    })
+    .catch((err) => {
+      app_node.appendChild(
+        Card({
+          id: "euao",
+          headline: `Failed to load Topics ${err}`,
+          authorPhoto: "auoe",
+          authorName: "aueo",
+        })
+      );
     });
-  });
-  // .catch((err) => {
-  //   app_node.appendChild(
-  //     Card({
-  //       id: "euao",
-  //       headline: `Failed to load Topics ${err}`,
-  //       authorPhoto: "auoe",
-  //       authorName: "aueo",
-  //     })
-  //   );
-  // });
 };
 
 cardAppender(".cards-container");
