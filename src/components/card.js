@@ -43,7 +43,18 @@ const Card = (article) => {
   return card_div;
 };
 
-// console.log(
+console.log(
+  Card({
+    headline: `headline`,
+    authorPhoto: `authorPhoto.euoe`,
+    authorName: `authorName`,
+  })
+);
+
+// let cont = document.querySelector("body");
+// cont.style.background = "red";
+
+// cont.appendChild(
 //   Card({
 //     headline: `headline`,
 //     authorPhoto: `authorPhoto.euoe`,
@@ -64,36 +75,39 @@ const cardAppender = (selector) => {
   //
   let app_node = document.querySelector(selector);
 
-  // axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
-  //   // Array topickeys inside articles obj
-  //   let article_topics = Object.keys(res.data.articles);
-  //   // Manipulate each topic obj
-  //   article_topics.forEach((each_topic) => {
-  //     // Manipulate each article in each topic obj
-  //     res.data.articles.each_topic.forEach((each_article) => {
-  //       app_node.appendChild(Card(each_article));
-  //     });
-  //   });
-  // });
-  // .catch((err) => {
-  //   app_node.appendChild(
-  //     Card({
-  //       id: "euao",
-  //       headline: "auoe",
-  //       authorPhoto: "auoe",
-  //       authorName: "aueo",
-  //     })
-  //   );
-  // });
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((res) => {
+      // Array topickeys inside articles obj
+      let article_topics = Object.keys(res.data.articles);
+      // Manipulate each topic obj
+      article_topics.forEach((each_topic) => {
+        // Manipulate each article in each topic obj
+        res.data.articles[each_topic].forEach((each_article) => {
+          app_node.appendChild(Card(each_article));
+        });
+      });
+    })
+    .catch((err) => {
+      app_node.appendChild(
+        Card({
+          id: "euao",
+          headline: `Failed to load Topics ${err}`,
+          authorPhoto: "auoe",
+          authorName: "aueo",
+        })
+      );
+    });
 };
 
-// cardAppender(".cards-container");
+cardAppender(".cards-container");
 
-axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
-  let keys = Object.keys(res.data.articles);
-  let key0 = keys[0];
-  console.log(key0);
-  console.log(res.data.articles[key0]);
-});
+// DEBUGGERY
+// axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
+//   let keys = Object.keys(res.data.articles);
+//   let key0 = keys[0];
+//   console.log(key0);
+//   console.log(res.data.articles[key0]);
+// });
 
 export { Card, cardAppender };
