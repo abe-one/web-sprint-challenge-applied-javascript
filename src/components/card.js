@@ -46,6 +46,17 @@ const Card = (article) => {
   return card_div;
 };
 
+// let header = document.querySelector(`.header-container`);
+// console.log(
+//   Card({
+//     id: "6bd3d116-39f8-4845-8544-3c271cdb9e89",
+//     headline: "jQuery Animations: When and Where to Use Them, and Not CSS",
+//     authorPhoto:
+//       "https://tk-assets.lambdaschool.com/1891c758-b3f4-4ec7-9d88-590bf7c7ceb2_fido.jpg",
+//     authorName: "FIDO WALKSALOT",
+//   })
+// );
+
 import axios from "axios";
 
 const cardAppender = (selector) => {
@@ -75,16 +86,14 @@ const cardAppender = (selector) => {
     .catch((err) => {
       app_node.appendChild(
         Card({
-          id: "euao",
+          id: "Ruh-Roh",
           headline: `Failed to load Topics ${err}`,
-          authorPhoto: "auoe",
-          authorName: "aueo",
+          authorPhoto: "",
+          authorName: "Rerror",
         })
       );
     });
 };
-
-cardAppender(".cards-container");
 
 // DEBUGGERY
 // axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
