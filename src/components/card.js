@@ -17,6 +17,9 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  // 👀👀👀👀INSTRUCTION TYPO ABOVE👀👀👀👀👀
+  // The example elements above indicate that the `span` will be outside the `author` `div` but the tests and CSS are set for the `span` to be inside the `author` `div`.
   let card_div = document.createElement("div");
   card_div.classList.add("card");
   let card_headline = document.createElement("div");
@@ -34,7 +37,7 @@ const Card = (article) => {
 
   card_div.appendChild(card_headline);
   card_div.appendChild(card_author);
-  card_div.appendChild(card_name);
+  card_author.appendChild(card_name);
   card_author.appendChild(card_img_container);
   card_img_container.appendChild(card_img);
 
@@ -47,15 +50,15 @@ const Card = (article) => {
 };
 
 // let header = document.querySelector(`.header-container`);
-// console.log(
-//   Card({
-//     id: "6bd3d116-39f8-4845-8544-3c271cdb9e89",
-//     headline: "jQuery Animations: When and Where to Use Them, and Not CSS",
-//     authorPhoto:
-//       "https://tk-assets.lambdaschool.com/1891c758-b3f4-4ec7-9d88-590bf7c7ceb2_fido.jpg",
-//     authorName: "FIDO WALKSALOT",
-//   })
-// );
+console.log(
+  Card({
+    id: "6bd3d116-39f8-4845-8544-3c271cdb9e89",
+    headline: "jQuery Animations: When and Where to Use Them, and Not CSS",
+    authorPhoto:
+      "https://tk-assets.lambdaschool.com/1891c758-b3f4-4ec7-9d88-590bf7c7ceb2_fido.jpg",
+    authorName: "FIDO WALKSALOT",
+  })
+);
 
 import axios from "axios";
 
