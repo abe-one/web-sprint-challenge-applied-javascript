@@ -38,6 +38,8 @@ const Card = (article) => {
   card_author.appendChild(card_img_container);
   card_img_container.appendChild(card_img);
 
+  card_div.addEventListener("click", (e) => console.log(e.target));
+
   return card_div;
 };
 
@@ -49,6 +51,8 @@ const Card = (article) => {
 //   })
 // );
 
+import axios from "axios";
+
 const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
@@ -58,6 +62,38 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  let app_node = document.querySelector(selector);
+
+  // axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
+  //   // Array topickeys inside articles obj
+  //   let article_topics = Object.keys(res.data.articles);
+  //   // Manipulate each topic obj
+  //   article_topics.forEach((each_topic) => {
+  //     // Manipulate each article in each topic obj
+  //     res.data.articles.each_topic.forEach((each_article) => {
+  //       app_node.appendChild(Card(each_article));
+  //     });
+  //   });
+  // });
+  // .catch((err) => {
+  //   app_node.appendChild(
+  //     Card({
+  //       id: "euao",
+  //       headline: "auoe",
+  //       authorPhoto: "auoe",
+  //       authorName: "aueo",
+  //     })
+  //   );
+  // });
 };
+
+// cardAppender(".cards-container");
+
+axios.get("https://lambda-times-api.herokuapp.com/articles").then((res) => {
+  let keys = Object.keys(res.data.articles);
+  let key0 = keys[0];
+  console.log(key0);
+  console.log(res.data.articles[key0]);
+});
 
 export { Card, cardAppender };
