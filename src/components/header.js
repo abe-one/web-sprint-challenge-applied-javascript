@@ -13,18 +13,22 @@ const Header = (title, date, temp) => {
   //
 
   //SYNTAX
-  let div = document.createElement("div").classList.add("header");
-  let date_span = document.createElement("span").classList.add("date");
+  let header_div = document.createElement("div");
+  header_div.classList.add("header");
+  let date_span = document.createElement("span");
+  date_span.classList.add("date");
   date_span.textContent = date;
-  let title_h1 = document.createElement("h1").textContent(title);
-  let temp_span = document.createElement("span").classList.add("temp");
+  let title_h1 = document.createElement("h1");
+  title_h1.textContent = title;
+  let temp_span = document.createElement("span");
+  temp_span.classList.add("temp");
   temp_span.textContent = temp;
 
-  div.appendChild(date_span);
-  div.appendChild(title_h1);
-  div.appendChild(temp_span);
+  header_div.appendChild(date_span);
+  header_div.appendChild(title_h1);
+  header_div.appendChild(temp_span);
 
-  return div;
+  return header_div;
 };
 
 const headerAppender = (selector) => {
@@ -40,12 +44,5 @@ const headerAppender = (selector) => {
     .querySelector(selector)
     .appendChild(Header(`Test Title`, `Test Date`, `Test Temp`));
 };
-
-// headerAppender("body");
-// document
-//   .querySelector("body")
-//   .appendChild(
-//     document.createElement("p").textContent("UHETEONTSHEOHUNTUHEON")
-//   );
 
 export { Header, headerAppender };

@@ -26,8 +26,6 @@ const Tabs = (topics) => {
   return topics_div;
 };
 
-console.log(Tabs(["12", "2342"]));
-
 import axios from "axios";
 
 const tabsAppender = (selector) => {
@@ -49,10 +47,5 @@ const tabsAppender = (selector) => {
       app_node.appendChild(Tabs([`Failed to load Topics ${err}`]));
     });
 };
-axios.get("https://lambda-times-api.herokuapp.com/topics").then((res) => {
-  console.log(res.data.topics);
-});
-
-// tabsAppender(`.tabs-container`);
 
 export { Tabs, tabsAppender };
