@@ -11,12 +11,14 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+
+  //SYNTAX
   let div = document.createElement("div").classList.add("header");
-  let date_span = document.createElement("span").textContent(date);
-  date_span.classList.add("date");
+  let date_span = document.createElement("span").classList.add("date");
+  date_span.textContent = date;
   let title_h1 = document.createElement("h1").textContent(title);
-  let temp_span = document.createElement("span").textContent(temp);
-  temp_span.classList.add("temp");
+  let temp_span = document.createElement("span").classList.add("temp");
+  temp_span.textContent = temp;
 
   div.appendChild(date_span);
   div.appendChild(title_h1);
@@ -34,9 +36,16 @@ const headerAppender = (selector) => {
   //
   // If the selector is the only argument and we must invoke the Header function as a nested function how are we to pass any arguments to the Header function?
   // The only thing I can see is setting default arguments, but then we'd be modifying the given architecture of the Header function, plus it would effectively hard code the result. Although the default values could be global variables, but then we'd be modding the index.js file which we're not supposed to modify.
-  document
+  return document
     .querySelector(selector)
     .appendChild(Header(`Test Title`, `Test Date`, `Test Temp`));
 };
+
+// headerAppender("body");
+// document
+//   .querySelector("body")
+//   .appendChild(
+//     document.createElement("p").textContent("UHETEONTSHEOHUNTUHEON")
+//   );
 
 export { Header, headerAppender };
