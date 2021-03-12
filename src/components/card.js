@@ -38,29 +38,13 @@ const Card = (article) => {
   card_author.appendChild(card_img_container);
   card_img_container.appendChild(card_img);
 
-  card_div.addEventListener("click", (e) => console.log(e.target));
+  card_div.addEventListener("click", (e) => {
+    let clicked_card = e.target.closest(".card");
+    console.log(clicked_card.querySelector(".headline").textContent);
+  });
 
   return card_div;
 };
-
-console.log(
-  Card({
-    headline: `headline`,
-    authorPhoto: `authorPhoto.euoe`,
-    authorName: `authorName`,
-  })
-);
-
-// let cont = document.querySelector("body");
-// cont.style.background = "red";
-
-// cont.appendChild(
-//   Card({
-//     headline: `headline`,
-//     authorPhoto: `authorPhoto.euoe`,
-//     authorName: `authorName`,
-//   })
-// );
 
 import axios from "axios";
 
