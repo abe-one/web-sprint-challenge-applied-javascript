@@ -32,6 +32,11 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  // If the selector is the only argument and we must invoke the Header function as a nested function how are we to pass any arguments to the Header function?
+  // The only thing I can see is setting default arguments, but then we'd be modifying the given architecture of the Header function, plus it would effectively hard code the result. Although the default values could be global variables, but then we'd be modding the index.js file which we're not supposed to modify.
+  document
+    .querySelector(selector)
+    .appendChild(Header(`Test Title`, `Test Date`, `Test Temp`));
 };
 
 export { Header, headerAppender };
